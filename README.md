@@ -16,7 +16,7 @@ Require jquery-fileupload in your app/assets/application.js file.
 
     //= require jquery-fileupload
 
-The snippet above will add the following js files to your mainfest file.
+The snippet above will add the following js files to the mainfest file.
 
     //=require jquery-fileupload/vendor/jquery.ui.widget
     //=require jquery-fileupload/jquery.iframe-transport
@@ -37,7 +37,7 @@ Require the stylesheet file to app/assets/stylesheets/application.css
 </ul>
     
 ## Thanks
-Thanks [Sebastian Tschan](https://github.com/blueimp) for writing an awesome file upload plugin [jQuery-File-Plugin](https://github.com/blueimp/jQuery-File-Upload)
+Thanks to [Sebastian Tschan](https://github.com/blueimp) for writing an awesome file upload plugin.
 
 ## License
 Copyright (c) 2012 Tors Dalid
