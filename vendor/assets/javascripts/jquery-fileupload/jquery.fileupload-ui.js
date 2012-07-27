@@ -1,5 +1,5 @@
 /*
- * jQuery File Upload User Interface Plugin 6.8.2
+ * jQuery File Upload User Interface Plugin 6.9.3
  * https://github.com/blueimp/jQuery-File-Upload
  *
  * Copyright 2010, Sebastian Tschan
@@ -128,9 +128,10 @@
                         .find('.progress').addClass(
                             !$.support.transition && 'progress-animated'
                         )
+                        .attr('aria-valuenow', 100)
                         .find('.bar').css(
                             'width',
-                            parseInt(100, 10) + '%'
+                            '100%'
                         );
                 }
                 return that._trigger('sent', e, data);
@@ -150,7 +151,6 @@
                             function () {
                                 var node = $(this);
                                 template = that._renderDownload([file])
-                                    .css('height', node.height())
                                     .replaceAll(node);
                                 that._forceReflow(template);
                                 that._transition(template).done(
@@ -227,26 +227,34 @@
             // Callback for upload progress events:
             progress: function (e, data) {
                 if (data.context) {
-                    data.context.find('.bar').css(
-                        'width',
-                        parseInt(data.loaded / data.total * 100, 10) + '%'
-                    );
+                    var progress = parseInt(data.loaded / data.total * 100, 10);
+                    data.context.find('.progress')
+                        .attr('aria-valuenow', progress)
+                        .find('.bar').css(
+                            'width',
+                            progress + '%'
+                        );
                 }
             },
             // Callback for global upload progress events:
             progressall: function (e, data) {
-                var $this = $(this);
-                $this.find('.fileupload-progress')
+                var $this = $(this),
+                    progress = parseInt(data.loaded / data.total * 100, 10),
+                    globalProgressNode = $this.find('.fileupload-progress'),
+                    extendedProgressNode = globalProgressNode
+                        .find('.progress-extended');
+                if (extendedProgressNode.length) {
+                    extendedProgressNode.html(
+                        $this.data('fileupload')._renderExtendedProgress(data)
+                    );
+                }
+                globalProgressNode
+                    .find('.progress')
+                    .attr('aria-valuenow', progress)
                     .find('.bar').css(
                         'width',
-                        parseInt(data.loaded / data.total * 100, 10) + '%'
-                    ).end()
-                    .find('.progress-extended').each(function () {
-                        $(this).html(
-                            $this.data('fileupload')
-                                ._renderExtendedProgress(data)
-                        );
-                    });
+                        progress + '%'
+                    );
             },
             // Callback for uploads start, equivalent to the global ajaxStart event:
             start: function (e) {
@@ -262,7 +270,9 @@
                 var that = $(this).data('fileupload');
                 that._transition($(this).find('.fileupload-progress')).done(
                     function () {
-                        $(this).find('.bar').css('width', '0%');
+                        $(this).find('.progress')
+                            .attr('aria-valuenow', '0')
+                            .find('.bar').css('width', '0%');
                         $(this).find('.progress-extended').html('&nbsp;');
                         that._trigger('stopped', e);
                     }
@@ -519,8 +529,8 @@
         },
 
         _forceReflow: function (node) {
-            this._reflow = $.support.transition &&
-                node.length && node[0].offsetWidth;
+            return $.support.transition && node.length &&
+                node[0].offsetWidth;
         },
 
         _transition: function (node) {
@@ -653,10 +663,32 @@
             }
         },
 
+        _stringToRegExp: function (str) {
+            var parts = str.split('/'),
+                modifiers = parts.pop();
+            parts.shift();
+            return new RegExp(parts.join('/'), modifiers);
+        },
+
+        _initRegExpOptions: function () {
+            var options = this.options;
+            if ($.type(options.acceptFileTypes) === 'string') {
+                options.acceptFileTypes = this._stringToRegExp(
+                    options.acceptFileTypes
+                );
+            }
+            if ($.type(options.previewSourceFileTypes) === 'string') {
+                options.previewSourceFileTypes = this._stringToRegExp(
+                    options.previewSourceFileTypes
+                );
+            }
+        },
+
         _initSpecialOptions: function () {
             parentWidget.prototype._initSpecialOptions.call(this);
             this._initFilesContainer();
             this._initTemplates();
+            this._initRegExpOptions();
         },
 
         _create: function () {
