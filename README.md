@@ -4,7 +4,11 @@
 
 jquery-fileupload-rails is a library that integrates jQuery File Upload for Rails 3.1 Asset Pipeline (Rails 3.2 supported).
 
-jquery-fileupload-rails is currently using jQuery-File-Plugin version 6.9.2.
+## Plugin versions
+
+* jQuery File Upload User Interface Plugin 6.9.4
+* jQuery File Upload Plugin 5.16.1
+* jQuery UI Widget 1.8.23+amd
 
 ## Installing Gem
 
@@ -43,6 +47,10 @@ The basic setup only includes the following files:
 Require the stylesheet file to app/assets/stylesheets/application.css
 
     *= require jquery.fileupload-ui
+
+## [Example app](https://github.com/tors/jquery-fileupload-rails-paperclip-example)
+This app uses paperclip and twitter-bootstrap-rails
+
 
 ## Thanks
 Thanks to [Sebastian Tschan](https://github.com/blueimp) for writing an awesome file upload plugin.
