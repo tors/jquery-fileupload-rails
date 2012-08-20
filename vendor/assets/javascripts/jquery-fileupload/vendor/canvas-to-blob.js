@@ -1,5 +1,5 @@
 /*
- * JavaScript Canvas to Blob 2.0.1
+ * JavaScript Canvas to Blob 2.0.2
  * https://github.com/blueimp/JavaScript-Canvas-to-Blob
  *
  * Copyright 2012, Sebastian Tschan
@@ -13,16 +13,23 @@
  */
 
 /*jslint nomen: true, regexp: true */
-/*global window, atob, ArrayBuffer, Uint8Array, define */
+/*global window, atob, Blob, ArrayBuffer, Uint8Array, define */
 
 (function (window) {
     'use strict';
     var CanvasPrototype = window.HTMLCanvasElement &&
             window.HTMLCanvasElement.prototype,
+        hasBlobConstructor = function () {
+                try {
+                    return !!new Blob();
+                } catch (e) {
+                    return false;
+                }
+            }(),
         BlobBuilder = window.BlobBuilder || window.WebKitBlobBuilder ||
             window.MozBlobBuilder || window.MSBlobBuilder,
-        dataURLtoBlob = BlobBuilder && window.atob && window.ArrayBuffer &&
-            window.Uint8Array && function (dataURI) {
+        dataURLtoBlob = (hasBlobConstructor || BlobBuilder) && window.atob &&
+            window.ArrayBuffer && window.Uint8Array && function (dataURI) {
                 var byteString,
                     arrayBuffer,
                     intArray,
@@ -42,11 +49,14 @@
                 for (i = 0; i < byteString.length; i += 1) {
                     intArray[i] = byteString.charCodeAt(i);
                 }
-                // Write the ArrayBuffer to a blob:
-                bb = new BlobBuilder();
-                bb.append(arrayBuffer);
                 // Separate out the mime component:
                 mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
+                // Write the ArrayBuffer to a blob:
+                if (hasBlobConstructor) {
+                    return new Blob([arrayBuffer], {type: mimeString});
+                }
+                bb = new BlobBuilder();
+                bb.append(arrayBuffer);
                 return bb.getBlob(mimeString);
             };
     if (window.HTMLCanvasElement && !CanvasPrototype.toBlob) {
