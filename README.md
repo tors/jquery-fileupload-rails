@@ -1,4 +1,4 @@
-# jQuery File Upload for Rails 3.1 Asset Pipeline
+# jQuery File Upload for Rails
 
 [jQuery-File-Plugin](https://github.com/blueimp/jQuery-File-Upload) is a file upload plugin written by [Sebastian Tschan](https://github.com/blueimp). jQuery File Upload features multiple file selection, drag&drop support, progress bars and preview images for jQuery. Supports cross-domain, chunked and resumable file uploads and client-side image resizing.
 
@@ -50,6 +50,9 @@ Require the stylesheet file to app/assets/stylesheets/application.css
 
 ## [Example app](https://github.com/tors/jquery-fileupload-rails-paperclip-example)
 This app uses paperclip and twitter-bootstrap-rails
+
+You can also checkout Ryan Bate's RailsCast [jQuery File Upload episode](http://railscasts.com/episodes/381-jquery-file-upload). You will
+need a pro account to watch it though.
 
 
 ## Thanks
