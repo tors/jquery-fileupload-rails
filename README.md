@@ -51,7 +51,7 @@ Require the stylesheet file to app/assets/stylesheets/application.css
 ## [Example app](https://github.com/tors/jquery-fileupload-rails-paperclip-example)
 This app uses paperclip and twitter-bootstrap-rails
 
-You can also checkout Ryan Bate's RailsCast [jQuery File Upload episode](http://railscasts.com/episodes/381-jquery-file-upload). You will
+You can also check out Ryan Bate's RailsCast [jQuery File Upload episode](http://railscasts.com/episodes/381-jquery-file-upload). You will
 need a pro account to watch it though.
 
 
