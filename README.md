@@ -52,9 +52,7 @@ Require the stylesheet file to app/assets/stylesheets/application.css
 
 The `jquery.iframe-transport` fallback transport has some special caveats regarding the response data type, http status, and character encodings. `jquery-fileupload-rails` includes a middleware that handles these inconsistencies seamlessly. If you decide to use it, create an initializer that adds the middleware to your application's middleware stack.
 
-    ````ruby
     Rails.application.config.middleware.use JQuery::FileUpload::Rails::Middleware
-    ````
 
 ## [Example app](https://github.com/tors/jquery-fileupload-rails-paperclip-example)
 This app uses paperclip and twitter-bootstrap-rails
