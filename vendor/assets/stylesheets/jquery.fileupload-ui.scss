@@ -37,7 +37,7 @@
   width: 200px;
 }
 .progress-animated .bar {
-  background: url(<%= asset_path 'progressbar.gif' %>) !important;
+  background: image-url('progressbar.gif') !important;
   filter: none;
 }
 .fileupload-loading {
@@ -45,7 +45,7 @@
   left: 50%;
   width: 128px;
   height: 128px;
-  background: url(<%= asset_path 'loading.gif' %>) center no-repeat;
+  background: image-url('loading.gif') center no-repeat;
   display: none;
 }
 .fileupload-processing .fileupload-loading {
