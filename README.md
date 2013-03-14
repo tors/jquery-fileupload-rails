@@ -22,25 +22,25 @@ Require jquery-fileupload in your app/assets/application.js file.
 
 The snippet above will add the following js files to the mainfest file.
 
-    //=require jquery-fileupload/vendor/jquery.ui.widget
-    //=require jquery-fileupload/vendor/load-image
-    //=require jquery-fileupload/vendor/canvas-to-blob
-    //=require jquery-fileupload/vendor/tmpl
-    //=require jquery-fileupload/jquery.iframe-transport
-    //=require jquery-fileupload/jquery.fileupload
-    //=require jquery-fileupload/jquery.fileupload-fp
-    //=require jquery-fileupload/jquery.fileupload-ui
-    //=require jquery-fileupload/locale
+    //= require jquery-fileupload/vendor/jquery.ui.widget
+    //= require jquery-fileupload/vendor/load-image
+    //= require jquery-fileupload/vendor/canvas-to-blob
+    //= require jquery-fileupload/vendor/tmpl
+    //= require jquery-fileupload/jquery.iframe-transport
+    //= require jquery-fileupload/jquery.fileupload
+    //= require jquery-fileupload/jquery.fileupload-fp
+    //= require jquery-fileupload/jquery.fileupload-ui
+    //= require jquery-fileupload/locale
 
 If you only need the basic files, just add the code below to your application.js file. [Basic setup guide](https://github.com/blueimp/jQuery-File-Upload/wiki/Basic-plugin)
 
-    //=require jquery-fileupload/basic
+    //= require jquery-fileupload/basic
 
 The basic setup only includes the following files:
 
-    //=require jquery-fileupload/vendor/jquery.ui.widget
-    //=require jquery-fileupload/jquery.iframe-transport
-    //=require jquery-fileupload/jquery.fileupload
+    //= require jquery-fileupload/vendor/jquery.ui.widget
+    //= require jquery-fileupload/jquery.iframe-transport
+    //= require jquery-fileupload/jquery.fileupload
 
 ## Using the stylesheet
 
