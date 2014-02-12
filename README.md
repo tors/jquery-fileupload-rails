@@ -20,7 +20,7 @@ Require jquery-fileupload in your app/assets/application.js file.
 
     //= require jquery-fileupload
 
-The snippet above will add the following js files to the mainfest file.
+The snippet above will add the following js files to the manifest file.
 
     //= require jquery-fileupload/vendor/jquery.ui.widget
     //= require jquery-fileupload/vendor/load-image
