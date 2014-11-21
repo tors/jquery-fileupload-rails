@@ -1,4 +1,3 @@
-//= require jquery-fileupload/vendor/jquery.ui.widget
 //= require jquery-fileupload/vendor/tmpl
 //= require jquery-fileupload/vendor/load-image
 //= require jquery-fileupload/vendor/canvas-to-blob
@@ -10,4 +9,5 @@
 //= require jquery-fileupload/jquery.fileupload-video
 //= require jquery-fileupload/jquery.fileupload-validate
 //= require jquery-fileupload/jquery.fileupload-ui
+//= require jquery-fileupload/jquery.fileupload-jquery-ui
 //= require jquery-fileupload/locale

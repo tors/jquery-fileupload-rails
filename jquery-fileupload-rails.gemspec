@@ -8,8 +8,8 @@ Gem::Specification.new do |s|
   s.authors     = ["Tors Dalid"]
   s.email       = ["cletedalid@gmail.com"]
   s.homepage    = "https://github.com/tors/jquery-fileupload-rails"
-  s.summary     = %q{jQuery File Upload for Rails 3.1 Asset Pipeline}
-  s.description = %q{jQuery File Upload by Sebastian Tschan integrated for Rails 3.1 Asset Pipeline}
+  s.summary     = %q{jQuery File Upload for Rails 3.1+ Asset Pipeline}
+  s.description = %q{jQuery File Upload by Sebastian Tschan integrated for Rails 3.1+ Asset Pipeline}
 
   s.rubyforge_project = "jquery-fileupload-rails"
 

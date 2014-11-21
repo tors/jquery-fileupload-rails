@@ -1,5 +1,5 @@
 /*
- * jQuery File Upload Processing Plugin 1.1
+ * jQuery File Upload Processing Plugin 1.3.0
  * https://github.com/blueimp/jQuery-File-Upload
  *
  * Copyright 2012, Sebastian Tschan
@@ -9,8 +9,8 @@
  * http://www.opensource.org/licenses/MIT
  */
 
-/*jslint nomen: true, unparam: true */
-/*global define, window */
+/* jshint nomen:false */
+/* global define, window */
 
 (function (factory) {
     'use strict';
@@ -64,13 +64,17 @@
             */
         },
 
-        _processFile: function (data) {
+        _processFile: function (data, originalData) {
             var that = this,
                 dfd = $.Deferred().resolveWith(that, [data]),
                 chain = dfd.promise();
             this._trigger('process', null, data);
             $.each(data.processQueue, function (i, settings) {
                 var func = function (data) {
+                    if (originalData.errorThrown) {
+                        return $.Deferred()
+                                .rejectWith(that, [originalData]).promise();
+                    }
                     return that.processActions[settings.action].call(
                         that,
                         data,
@@ -98,14 +102,20 @@
         _transformProcessQueue: function (options) {
             var processQueue = [];
             $.each(options.processQueue, function () {
-                var settings = {};
+                var settings = {},
+                    action = this.action,
+                    prefix = this.prefix === true ? action : this.prefix;
                 $.each(this, function (key, value) {
                     if ($.type(value) === 'string' &&
                             value.charAt(0) === '@') {
-                        settings[key] = options[value.slice(1)];
+                        settings[key] = options[
+                            value.slice(1) || (prefix ? prefix +
+                                key.charAt(0).toUpperCase() + key.slice(1) : key)
+                        ];
                     } else {
                         settings[key] = value;
                     }
+
                 });
                 processQueue.push(settings);
             });
@@ -127,10 +137,14 @@
                 if (this._processing === 0) {
                     this._trigger('processstart');
                 }
-                $.each(data.files, function (index, file) {
+                $.each(data.files, function (index) {
                     var opts = index ? $.extend({}, options) : options,
                         func = function () {
-                            return that._processFile(opts);
+                            if (data.errorThrown) {
+                                return $.Deferred()
+                                        .rejectWith(that, [data]).promise();
+                            }
+                            return that._processFile(opts, data);
                         };
                     opts.index = index;
                     that._processing += 1;

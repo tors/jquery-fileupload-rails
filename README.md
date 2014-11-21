@@ -6,9 +6,9 @@ jquery-fileupload-rails is a library that integrates jQuery File Upload for Rail
 
 ## Plugin versions
 
-* jQuery File Upload User Interface Plugin 6.11
-* jQuery File Upload Plugin 5.19.3
-* jQuery UI Widget 1.9.1+amd
+* jQuery File Upload User Interface Plugin 9.6.0
+* jQuery File Upload Plugin 5.42.0
+* jQuery UI Widget 1.11.1
 
 ## Installing Gem
 
@@ -23,14 +23,22 @@ Require jquery-fileupload in your app/assets/application.js file.
 The snippet above will add the following js files to the mainfest file.
 
     //= require jquery-fileupload/vendor/jquery.ui.widget
+    //= require jquery-fileupload/vendor/tmpl
     //= require jquery-fileupload/vendor/load-image
     //= require jquery-fileupload/vendor/canvas-to-blob
-    //= require jquery-fileupload/vendor/tmpl
     //= require jquery-fileupload/jquery.iframe-transport
     //= require jquery-fileupload/jquery.fileupload
-    //= require jquery-fileupload/jquery.fileupload-fp
+    //= require jquery-fileupload/jquery.fileupload-process
+    //= require jquery-fileupload/jquery.fileupload-image
+    //= require jquery-fileupload/jquery.fileupload-audio
+    //= require jquery-fileupload/jquery.fileupload-video
+    //= require jquery-fileupload/jquery.fileupload-validate
     //= require jquery-fileupload/jquery.fileupload-ui
     //= require jquery-fileupload/locale
+    //= require jquery-fileupload/jquery.fileupload-angular
+    //= require jquery-fileupload/jquery.fileupload-jquery-ui
+    //= require jquery-fileupload/cors/jquery.postmessage-transport
+    //= require jquery-fileupload/cors/jquery.xdr-transport
 
 If you only need the basic files, just add the code below to your application.js file. [Basic setup guide](https://github.com/blueimp/jQuery-File-Upload/wiki/Basic-plugin)
 
@@ -42,11 +50,25 @@ The basic setup only includes the following files:
     //= require jquery-fileupload/jquery.iframe-transport
     //= require jquery-fileupload/jquery.fileupload
 
+You can also require the following to get the js from the Basic-Plus, AngularJS and jQuery UI Examples:
+
+    //= require jquery-fileupload/basic-plus
+
+    //= require jquery-fileupload/angularjs
+
+    //= require jquery-fileupload/jquery-ui
+
 ## Using the stylesheet
 
 Require the stylesheet file to app/assets/stylesheets/application.css
 
+    *= require jquery.fileupload
     *= require jquery.fileupload-ui
+
+There are also noscript styles for Browsers with Javascript disabled, to use them create a noscript.css and add it to your precompile-list and layout inside a noscript tag:
+
+    *= require jquery.fileupload-noscript
+    *= require jquery.fileupload-ui-noscript
 
 ## Using the middleware
 
