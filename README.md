@@ -6,7 +6,7 @@ jquery-fileupload-rails is a library that integrates jQuery File Upload for Rail
 
 ## Plugin versions
 
-* jQuery File Upload Plugin v9.11.2
+* jQuery File Upload Plugin v9.12.5
 
 ## Installing Gem
 
@@ -75,7 +75,7 @@ The `jquery.iframe-transport` fallback transport has some special caveats regard
     Rails.application.config.middleware.use JQuery::FileUpload::Rails::Middleware
 
 ## Example apps
-[jquery-fileupload-rails-paperclip-example](https://github.com/tors/jquery-fileupload-rails-paperclip-example): jQuery File Upload in Rails 3.2 with Paperclip and Bootstrap 
+[jquery-fileupload-rails-paperclip-example](https://github.com/tors/jquery-fileupload-rails-paperclip-example): jQuery File Upload in Rails 3.2 with Paperclip and Bootstrap
 
 [rails-resumable-jquery-fileupload](https://github.com/vgantchev/rails-resumable-jquery-fileupload): resumable (chunked) uploads with jQuery File Upload in Rails 4.2 using Paperclip
 
