@@ -72,7 +72,9 @@ There are also noscript styles for Browsers with Javascript disabled, to use the
 
 The `jquery.iframe-transport` fallback transport has some special caveats regarding the response data type, http status, and character encodings. `jquery-fileupload-rails` includes a middleware that handles these inconsistencies seamlessly. If you decide to use it, create an initializer that adds the middleware to your application's middleware stack.
 
-    Rails.application.config.middleware.use JQuery::FileUpload::Rails::Middleware
+```ruby
+Rails.application.config.middleware.use JQuery::FileUpload::Rails::Middleware
+```
 
 ## Example apps
 [jquery-fileupload-rails-paperclip-example](https://github.com/tors/jquery-fileupload-rails-paperclip-example): jQuery File Upload in Rails 3.2 with Paperclip and Bootstrap
