@@ -81,8 +81,7 @@ Rails.application.config.middleware.use JQuery::FileUpload::Rails::Middleware
 
 [rails-resumable-jquery-fileupload](https://github.com/vgantchev/rails-resumable-jquery-fileupload): resumable (chunked) uploads with jQuery File Upload in Rails 4.2 using Paperclip
 
-You can also check out Ryan Bate's RailsCast [jQuery File Upload episode](http://railscasts.com/episodes/381-jquery-file-upload). You will
-need a pro account to watch it though.
+You can also check out Ryan Bate's RailsCast [jQuery File Upload episode](http://railscasts.com/episodes/381-jquery-file-upload). 
 
 
 ## Thanks
